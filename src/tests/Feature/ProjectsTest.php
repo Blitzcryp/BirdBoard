@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use Database\Factories\ProjectFactory;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -28,11 +29,15 @@ class ProjectsTest extends TestCase
 
     public function test_a_project_requires_a_title()
     {
-        $this->post("/projects", [])->assertSessionHasErrors('title');
+        $attributes = (new ProjectFactory())->make();
+
+        $this->post("/projects", $attributes)->assertSessionHasErrors('title');
     }
 
     public function test_a_project_requires_a_description()
     {
-        $this->post("/projects", [])->assertSessionHasErrors('description');
+        $attributes = (new ProjectFactory())->make();
+
+        $this->post("/projects", $attributes)->assertSessionHasErrors('description');
     }
 }

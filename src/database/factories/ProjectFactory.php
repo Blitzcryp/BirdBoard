@@ -2,11 +2,12 @@
 
 namespace Database\Factories;
 
+use App\Models\Project;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Faker\Generator as Faker;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Providers\Project>
+ * @extends Factory
  */
 class ProjectFactory extends Factory
 {
@@ -15,7 +16,7 @@ class ProjectFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
         return [
             'title' => Faker::$sentence,
